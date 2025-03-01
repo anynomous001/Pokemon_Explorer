@@ -1,15 +1,25 @@
 import { create } from 'zustand';
 
-type PokemonStore = {
+interface PokemonState {
+    allPokemon: any[];
+    setAllPokemon: (pokemon: any[]) => void;
+
     query: string;
     setQuery: (query: string) => void;
-    pokemon: [];
-    setPokemon: (pokemon: object | null) => void;
-};
 
-export const usePokemonStore = create<PokemonStore>((set) => ({
+    filteredPokemon: any[];
+    setFilteredPokemon: (pokemon: any[]) => void;
+}
+
+const usePokemonStore = create<PokemonState>((set) => ({
+    allPokemon: [],
+    setAllPokemon: (pokemon) => set({ allPokemon: pokemon }),
+
     query: '',
     setQuery: (query) => set({ query }),
-    pokemon: null,
-    setPokemon: (pokemon) => set({ pokemon }),
+
+    filteredPokemon: [],
+    setFilteredPokemon: (pokemon) => set({ filteredPokemon: pokemon }),
 }));
+
+export default usePokemonStore;

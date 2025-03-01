@@ -5,13 +5,14 @@ import PokemonCards from "@/app/components/pokemon-cards";
 import { nanoid } from "nanoid";
 import HomePageSkeleton from "./HomePageSkeleton";
 import { useRecoilState } from "recoil";
-import { searchQueryState } from "../store/pokemonState";
+import usePokemonStore, { searchQueryState } from "../store/pokemonState";
 
 
 const CardContainer = () => {
 
     const { pokemon, error, loading } = useFetch()
 
+    const { filteredPokemon } = usePokemonStore();
 
 
 
@@ -23,7 +24,7 @@ const CardContainer = () => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
             {
-                pokemon.map((pokemon: any) => {
+                filteredPokemon.map((pokemon: any) => {
                     console.log(pokemon.image)
                     return <PokemonCards
                         key={nanoid()}

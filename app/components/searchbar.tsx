@@ -2,22 +2,23 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { usePokemonStore } from "../store/pokemonState"
+import usePokemonStore from "../store/pokemonState"
 
 const SearchBar = () => {
 
 
-    const { query, setQuery, pokemon, setPokemon } = usePokemonStore();
+    const { query, setQuery, allPokemon, setFilteredPokemon } = usePokemonStore();
 
 
 
     const handleSearch = () => {
         const filteredPokemons = query
-            ? pokemon.filter((p) => p.name.toLowerCase().includes(query.toLowerCase()))
-            : pokemon
+            ? allPokemon.filter((p: any) => p.name.toLowerCase().includes(query.toLowerCase()))
+            : allPokemon
 
 
-        setPokemon(filteredPokemons)
+        setFilteredPokemon(filteredPokemons)
+        setQuery('')
     }
 
     return (
@@ -26,6 +27,7 @@ const SearchBar = () => {
                 type="email"
                 placeholder="Search Your pokemon here"
                 onChange={(e) => setQuery(e.target.value)}
+                value={query}
             />
             <Button
                 type="submit"
