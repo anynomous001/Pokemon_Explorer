@@ -1,4 +1,5 @@
 import Navbar from '@/app/components/navbar'
+import { GridBackgroundDemo } from '@/components/grid-background-demo'
 
 
 
@@ -9,10 +10,11 @@ interface HomelayoutProps {
 
 const Homelayout = ({ children }: HomelayoutProps) => {
     return (
-        <div>
+        <GridBackgroundDemo>
             <Navbar />
             {children}
-        </div>
+
+        </GridBackgroundDemo>
     )
 }
 

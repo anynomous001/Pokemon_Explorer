@@ -6,16 +6,13 @@ import { useState, useEffect } from 'react'
 export const useFetch = () => {
 
     const [pokemon, setPokemon] = useState([])
-    const [error, setError] = useState(null)
+    const [error, setError] = useState({})
     const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
 
         const fetchData = async () => {
-
-            console.log(process.env.NEXT_PUBLIC_API_URL)
-
             try {
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}`)
                 // console.log(response?.data)
@@ -28,6 +25,7 @@ export const useFetch = () => {
                         const details = res.data;
                         return {
                             name: details.name,
+                            id: details.id,
                             image: details.sprites.front_default
                         };
                     })
