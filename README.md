@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## **Pokémon Explorer** 🏆  
+A responsive web application that allows users to explore Pokémon details using **Next.js**, **Zustand**, and **Tailwind CSS**.  
 
-First, run the development server:
+🔗 **GitHub Repository:** [Pokemon_Explorer](https://github.com/anynomous001/Pokemon_Explorer.git)  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## **🚀 Features**
+- 🔍 **Search Pokémon** by name  
+- 📜 **List of Pokémon** with pagination  
+- 📌 **Detailed Pokémon Stats** (abilities, types, moves, etc.)  
+- ⚡ **Fast & Responsive UI** using **Next.js App Router**  
+- 🌍 **Real-time state management** with **Zustand**  
+- 🎨 **Modern UI** powered by **Tailwind CSS**  
+
+---
+
+## **📂 Folder Structure**
+```
+📦 Pokemon_Explorer
+├── 📂 app/                    # Next.js App Router
+│   ├── 📂 (Home)/              # Home layout
+│   │   ├── layout.tsx         # Main layout
+│   │   ├── page.tsx           # Home page
+│   ├── 📂 pokemon/             # Pokémon details
+│   │   ├── [id]/page.tsx      # Dynamic Pokémon details
+│
+├── 📂 components/              # UI Components
+│   ├── Navbar.tsx             # Navigation bar
+│   ├── SearchBar.tsx          # Pokémon search input
+│   ├── PokemonList.tsx        # Pokémon listing
+│   ├── PokemonCard.tsx        # Individual Pokémon card
+│
+├── 📂 store/                   # Zustand store
+│   ├── pokemonState.ts         # Manages Pokémon state
+│
+├── 📂 styles/                  # TailwindCSS styling
+│   ├── globals.css             # Global styles
+│
+├── .env.local                   # Environment variables (API URL)
+├── package.json                 # Project dependencies
+├── README.md                    # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## **🛠️ Tech Stack**
+- **Next.js** (App Router)  
+- **TypeScript** (Optional)  
+- **Zustand** (State Management)  
+- **Tailwind CSS** (Styling)  
+- **PokeAPI** (Data Source)  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## **🔧 Setup & Installation**
+### **1️⃣ Clone the Repository**
+```sh
+git clone https://github.com/anynomous001/Pokemon_Explorer.git
+cd Pokemon_Explorer
+```
 
-To learn more about Next.js, take a look at the following resources:
+### **2️⃣ Install Dependencies**
+```sh
+npm install
+# OR
+yarn install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **3️⃣ Setup Environment Variables**
+Create a `.env.local` file and add:
+```
+NEXT_PUBLIC_API_URL=https://pokeapi.co/api/v2
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### **4️⃣ Run the Development Server**
+```sh
+npm run dev
+# OR
+yarn dev
+```
+🚀 **Visit:** `http://localhost:3000`  
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## **📜 Usage Guide**
+1. **Home Page:** View a list of Pokémon with a search bar.  
+2. **Search:** Type a Pokémon name to filter the list.  
+3. **Details Page:** Click on a Pokémon to view stats, abilities, and moves.  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## **📸 Screenshots**
+### 🔍 **Home Page**
+![HomePage](https://via.placeholder.com/600x300?text=Pokemon+Explorer+Home)  
+
+### 🏆 **Pokémon Details Page**
+![DetailsPage](https://via.placeholder.com/600x300?text=Pokemon+Details)  
+
+---
+
+## **🤝 Contributing**
+Want to contribute?  
+- Fork the repo  
+- Create a new branch (`git checkout -b feature-name`)  
+- Commit changes (`git commit -m "Added feature"`)  
+- Push (`git push origin feature-name`)  
+- Open a Pull Request 🎉  
+
+---
+
+## **📜 License**
+This project is **open-source** under the **MIT License**.  
+
+---
+
+This README provides clear **setup instructions, features, and usage details**. Let me know if you'd like any refinements! 🚀
