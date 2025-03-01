@@ -4,11 +4,17 @@ import { useFetch } from "@/hooks/useFetch";
 import PokemonCards from "@/app/components/pokemon-cards";
 import { nanoid } from "nanoid";
 import HomePageSkeleton from "./HomePageSkeleton";
+import { useRecoilState } from "recoil";
+import { searchQueryState } from "../store/pokemonState";
 
 
 const CardContainer = () => {
 
     const { pokemon, error, loading } = useFetch()
+
+
+
+
 
     if (loading) {
         return <HomePageSkeleton />

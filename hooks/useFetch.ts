@@ -1,11 +1,13 @@
 'use client'
 
+import { usePokemonStore } from '@/app/store/pokemonState';
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 export const useFetch = () => {
 
-    const [pokemon, setPokemon] = useState([])
+
+    const { pokemon, setPokemon } = usePokemonStore();
     const [error, setError] = useState({})
     const [loading, setLoading] = useState(true)
 
@@ -15,9 +17,6 @@ export const useFetch = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}`)
-                // console.log(response?.data)
-                // setPokemon(response?.data)
-
 
                 const pokemonDetails: any[] = await Promise.all(
                     response?.data.results.map(async (pokemon: any) => {

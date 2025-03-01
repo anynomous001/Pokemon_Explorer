@@ -1,6 +1,11 @@
 import React from 'react'
 
 const HomePageSkeleton = () => {
+
+
+
+
+
     return (
         <div className="flex flex-col items-center justify-center min-h-[100vh] space-y-4">
             <div role="status">

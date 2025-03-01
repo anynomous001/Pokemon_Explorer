@@ -2,9 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import PokemonCardSkeleton from "./pokemon-cards-skeleton";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 interface PokemonCardsProps {
     pokemon: any,
