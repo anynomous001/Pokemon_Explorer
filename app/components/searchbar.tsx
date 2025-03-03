@@ -3,22 +3,31 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import usePokemonStore from "../store/pokemonState"
+import { debounce } from 'lodash'
+import { useCallback } from "react"
+import { all } from "axios"
 
 const SearchBar = () => {
 
 
-    const { query, setQuery, allPokemon, setFilteredPokemon } = usePokemonStore();
+    const { query, setQuery, allPokemon, setFilteredPokemon, filteredPokemon } = usePokemonStore();
 
 
+    const debounceSearch = useCallback(
+        debounce((searchTerm: string) => {
+            const filteredPokemons = searchTerm ?
+                allPokemon.filter((pokemon: any) => pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                : allPokemon
+            setFilteredPokemon(filteredPokemons)
+            setQuery('')
+        }, 300),
+        [filteredPokemon]
+    )
 
-    const handleSearch = () => {
-        const filteredPokemons = query
-            ? allPokemon.filter((p: any) => p.name.toLowerCase().includes(query.toLowerCase()))
-            : allPokemon
-
-
-        setFilteredPokemon(filteredPokemons)
-        setQuery('')
+    const handleSearch = (e: any) => {
+        const searchTerm = e.target.value
+        debounceSearch(searchTerm)
+        setQuery(searchTerm)
     }
 
     return (
@@ -26,7 +35,7 @@ const SearchBar = () => {
             <Input
                 type="email"
                 placeholder="Search Your pokemon here"
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => handleSearch(e)}
                 value={query}
             />
             <Button
