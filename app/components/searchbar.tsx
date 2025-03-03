@@ -10,7 +10,7 @@ import { Pokemon } from "./card-container"
 const SearchBar = () => {
 
 
-    const { query, setQuery, allPokemon, setFilteredPokemon, filteredPokemon } = usePokemonStore();
+    const { query, setQuery, allPokemon, setFilteredPokemon } = usePokemonStore();
 
 
     const debounceSearch = useCallback(
@@ -20,12 +20,11 @@ const SearchBar = () => {
                 : allPokemon
             setFilteredPokemon(filteredPokemons)
         }, 300),
-        [filteredPokemon]
+        [allPokemon, setFilteredPokemon]
     )
 
-    interface SearchEvent extends React.ChangeEvent<HTMLInputElement> { }
 
-    const handleSearch = (e: SearchEvent) => {
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         const searchTerm = e.target.value
         debounceSearch(searchTerm)
         setQuery(searchTerm)
