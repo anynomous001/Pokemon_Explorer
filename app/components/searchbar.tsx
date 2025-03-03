@@ -23,7 +23,9 @@ const SearchBar = () => {
         [filteredPokemon]
     )
 
-    const handleSearch = (e: any) => {
+    interface SearchEvent extends React.ChangeEvent<HTMLInputElement> { }
+
+    const handleSearch = (e: SearchEvent) => {
         const searchTerm = e.target.value
         debounceSearch(searchTerm)
         setQuery(searchTerm)
@@ -39,7 +41,7 @@ const SearchBar = () => {
             />
             <Button
                 type="submit"
-                onClick={handleSearch}
+                onClick={() => debounceSearch(query)}
             >Search</Button>
         </div>
     )
