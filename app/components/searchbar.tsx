@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input"
 import usePokemonStore from "../store/pokemonState"
 import { debounce } from 'lodash'
 import { useCallback } from "react"
-import { all } from "axios"
 
 const SearchBar = () => {
 
@@ -19,7 +18,6 @@ const SearchBar = () => {
                 allPokemon.filter((pokemon: any) => pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()))
                 : allPokemon
             setFilteredPokemon(filteredPokemons)
-            setQuery('')
         }, 300),
         [filteredPokemon]
     )

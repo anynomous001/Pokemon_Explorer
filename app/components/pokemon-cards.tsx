@@ -4,13 +4,20 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
+
+
+
 interface PokemonCardsProps {
-    pokemon: any,
-    error: any,
-    loading: any
+    pokemon: {
+        name: string,
+        id: number,
+        image: string
+    },
+    error: Error,
+    loading: boolean
 }
 
-const PokemonCards = ({ pokemon, error, loading }: PokemonCardsProps) => {
+const PokemonCards = ({ pokemon }: PokemonCardsProps) => {
 
 
 
@@ -34,10 +41,10 @@ const PokemonCards = ({ pokemon, error, loading }: PokemonCardsProps) => {
                     <h1 className="font-bold text-xl md:text-2xl text-gray-50 relative z-10">
                         {pokemon.name}
                     </h1>
-                    <p className="font-normal text-sm text-gray-50 relative z-20 my-4">
+                    {/* <p className="font-normal text-sm text-gray-50 relative z-20 my-4">
                         Card with Author avatar, complete name and time to read - most
                         suitable for blogs.
-                    </p>
+                    </p> */}
                 </div>
             </div>
         </Link>

@@ -4,13 +4,18 @@ import { useFetch } from "@/hooks/useFetch";
 import PokemonCards from "@/app/components/pokemon-cards";
 import { nanoid } from "nanoid";
 import HomePageSkeleton from "./HomePageSkeleton";
-import { useRecoilState } from "recoil";
-import usePokemonStore, { searchQueryState } from "../store/pokemonState";
+import usePokemonStore from "../store/pokemonState";
+
+interface Pokemon {
+    name: string,
+    id: number,
+    image: string
+}
 
 
 const CardContainer = () => {
 
-    const { pokemon, error, loading } = useFetch()
+    const { error, loading } = useFetch()
 
     const { filteredPokemon } = usePokemonStore();
 
@@ -24,12 +29,12 @@ const CardContainer = () => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
             {
-                filteredPokemon.map((pokemon: any) => {
-                    console.log(pokemon.image)
+                filteredPokemon.map((pokemon: Pokemon) => {
+                    console.log(pokemon)
                     return <PokemonCards
                         key={nanoid()}
                         pokemon={pokemon}
-                        error={error}
+                        error={error as Error}
                         loading={loading}
                     />
                 })

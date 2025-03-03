@@ -1,12 +1,11 @@
 'use client'
 
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { useEffect, useState } from "react"
-import { types } from "util"
 
 export const usePokemon = (id: string | string[] | undefined) => {
     const [pokemonDetails, setPokemonDetails] = useState({})
-    const [error, setError] = useState({})
+    const [error, setError] = useState<null | Error>(null)
     const [loading, setLoading] = useState(true)
 
 
@@ -30,9 +29,17 @@ export const usePokemon = (id: string | string[] | undefined) => {
                 setLoading(false)
 
             } catch (error) {
-                console.log(error)
+                if (error instanceof AxiosError) {
+                    console.error("Network error:", error.message);
+                    setError(error);
+                } else if (error instanceof TypeError) {
+                    console.error("Type error:", error.message);
+                    setError(error);
+                } else {
+                    console.error("Unexpected error:", error);
+                    setError(error as Error);
+                }
                 setLoading(false)
-                setError(error)
             }
 
         }

@@ -3,12 +3,13 @@
 import usePokemonStore from '@/app/store/pokemonState';
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { AxiosError } from 'axios';
 
 export const useFetch = () => {
 
 
-    const { allPokemon, setAllPokemon, setFilteredPokemon, filteredPokemon } = usePokemonStore();
-    const [error, setError] = useState({})
+    const { allPokemon, setAllPokemon, setFilteredPokemon } = usePokemonStore();
+    const [error, setError] = useState<Error | null>(null);
     const [loading, setLoading] = useState(true)
 
 
@@ -34,14 +35,20 @@ export const useFetch = () => {
                 setFilteredPokemon(pokemonDetails)
                 setAllPokemon(pokemonDetails)
                 setLoading(false)
-
-                console.log(pokemonDetails)
-
-
-
             } catch (error) {
-                console.log(error)
-                setError(error)
+
+
+
+                if (error instanceof AxiosError) {
+                    console.error("Network error:", error.message);
+                    setError(error);
+                } else if (error instanceof TypeError) {
+                    console.error("Type error:", error.message);
+                    setError(error);
+                } else {
+                    console.error("Unexpected error:", error);
+                    setError(error as Error);
+                }
                 setLoading(false)
             }
         }
