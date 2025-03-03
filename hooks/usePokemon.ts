@@ -21,12 +21,14 @@ export const usePokemon = (id: string | string[] | undefined) => {
     const [loading, setLoading] = useState(true)
 
 
+    console.log(id)
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/${id}`)
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL2}/${id}`)
                 setPokemonDetails(response?.data)
-
+                console.log(response?.data)
                 const details = {
                     name: response.data.name,
                     id: response.data.id,
@@ -38,6 +40,8 @@ export const usePokemon = (id: string | string[] | undefined) => {
                 };
 
                 setPokemonDetails(details);
+                console.log(details)
+                console.log(pokemonDetails)
                 setLoading(false)
 
             } catch (error) {
