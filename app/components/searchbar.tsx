@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import usePokemonStore from "../store/pokemonState"
 import { debounce } from 'lodash'
 import { useCallback } from "react"
+import { Pokemon } from "./card-container"
 
 const SearchBar = () => {
 
@@ -15,7 +16,7 @@ const SearchBar = () => {
     const debounceSearch = useCallback(
         debounce((searchTerm: string) => {
             const filteredPokemons = searchTerm ?
-                allPokemon.filter((pokemon: any) => pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                allPokemon.filter((pokemon: Pokemon) => pokemon.name.toLowerCase().includes(searchTerm.toLowerCase()))
                 : allPokemon
             setFilteredPokemon(filteredPokemons)
         }, 300),

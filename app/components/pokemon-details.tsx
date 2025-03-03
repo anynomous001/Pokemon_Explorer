@@ -13,7 +13,7 @@ const PokemonDetailsPage = () => {
     const params = useParams()
     const id = params?.id
 
-    const { pokemonDetails, error, loading } = usePokemon(id)
+    const { pokemonDetails, loading } = usePokemon(id)
 
     console.log(pokemonDetails)
 

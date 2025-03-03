@@ -1,14 +1,18 @@
 import { create } from 'zustand';
+import { Pokemon } from '../components/card-container';
+
+
+
 
 interface PokemonState {
-    allPokemon: any[];
-    setAllPokemon: (pokemon: any[]) => void;
+    allPokemon: Pokemon[];
+    setAllPokemon: (pokemon: Pokemon[]) => void;
 
     query: string;
     setQuery: (query: string) => void;
 
-    filteredPokemon: any[];
-    setFilteredPokemon: (pokemon: any[]) => void;
+    filteredPokemon: Pokemon[];
+    setFilteredPokemon: (pokemon: Pokemon[]) => void;
 }
 
 const usePokemonStore = create<PokemonState>((set) => ({

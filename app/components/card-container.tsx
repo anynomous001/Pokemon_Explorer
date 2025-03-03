@@ -6,7 +6,7 @@ import { nanoid } from "nanoid";
 import HomePageSkeleton from "./HomePageSkeleton";
 import usePokemonStore from "../store/pokemonState";
 
-interface Pokemon {
+export interface Pokemon {
     name: string,
     id: number,
     image: string

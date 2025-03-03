@@ -3,8 +3,20 @@
 import axios, { AxiosError } from "axios"
 import { useEffect, useState } from "react"
 
+interface PokemonDetailsType {
+    name: string,
+    id: number,
+    image: string,
+    abilities: any[],
+    moves: any[],
+    stats: any[],
+    types: any[]
+}
+
+
+
 export const usePokemon = (id: string | string[] | undefined) => {
-    const [pokemonDetails, setPokemonDetails] = useState({})
+    const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailsType | null>(null)
     const [error, setError] = useState<null | Error>(null)
     const [loading, setLoading] = useState(true)
 
