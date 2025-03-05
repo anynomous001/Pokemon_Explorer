@@ -7,8 +7,6 @@ import React from 'react'
 
 const PokemonDetails = () => {
 
-
-
     return (
         <GridBackgroundDemo>
             <div className='h-full flex justify-center  antialiased'>
