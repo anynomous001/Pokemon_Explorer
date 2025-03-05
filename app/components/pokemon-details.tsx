@@ -28,7 +28,7 @@ const PokemonDetailsPage = () => {
     return (
         <div className='w-[80vw]  p-4'>
             <div className='flex flex-col items-center space-y-4'>
-                <Image className='border-2 border-white border-solid' src={pokemonDetails?.image} alt="pokemon" width={250} height={250} />
+                <Image className='bg-neutral-500/30 rounded-md shadow-white shadow-sm w-[20rem] h-[20rem]' src={pokemonDetails?.image} alt="pokemon" width={250} height={250} />
                 <h1 className='text-9xl font-bold'>{capitalize(pokemonDetails?.name)}</h1>
 
             </div>

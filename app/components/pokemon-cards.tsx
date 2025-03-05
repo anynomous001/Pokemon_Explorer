@@ -3,6 +3,9 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { capitalize } from "lodash";
 
 
 
@@ -26,20 +29,23 @@ const PokemonCards = ({ pokemon }: PokemonCardsProps) => {
         <Link href={`/pokemon/${pokemon.id}`}>
 
             <div className={cn(
-                "bg-gray-400/25 cursor-pointer z-20 h-96 rounded-md shadow-xl  max-w-sm mx-auto  flex flex-col justify-between p-4 hover:shadow-2xl hover:bg-gray-500 transition duration-300 ease-in-out",
+                "flex flex-col items-center space-y-10 bg-gray-400/25 cursor-pointer z-20 h-96 rounded-md shadow-xl  max-w-sm mx-auto   p-4 hover:shadow-2xl hover:bg-gray-500 transition duration-300 ease-in-out",
             )}
             >
+
+
                 <Image
+                    className=''
                     src={pokemon.image}
-                    alt="Pokemon"
-                    width={180}
-                    height={40}
-                    className="rounded-md mx-auto"
+                    alt="pokemon"
+                    width={150}
+                    height={150}
                 />
 
-                <div className="text content">
-                    <h1 className="font-bold text-xl md:text-2xl text-gray-50 relative z-10">
-                        {pokemon.name}
+
+                <div className="text content ">
+                    <h1 className="font-bold  text-4xl md:text-4xl text-neutral-100/70 relative z-10">
+                        {capitalize(pokemon.name)}
                     </h1>
                     {/* <p className="font-normal text-sm text-gray-50 relative z-20 my-4">
                         Card with Author avatar, complete name and time to read - most

@@ -5,6 +5,11 @@ import PokemonCards from "@/app/components/pokemon-cards";
 import { nanoid } from "nanoid";
 import HomePageSkeleton from "./HomePageSkeleton";
 import usePokemonStore from "../store/pokemonState";
+import { FocusCards } from "@/components/ui/focus-cards";
+
+
+import Link from "next/link";
+import { useState } from "react";
 
 export interface Pokemon {
     name: string,
@@ -16,8 +21,9 @@ export interface Pokemon {
 const CardContainer = () => {
 
     const { error, loading } = useFetch()
-
     const { filteredPokemon } = usePokemonStore();
+    let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
 
 
 
@@ -29,14 +35,23 @@ const CardContainer = () => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
             {
-                filteredPokemon.map((pokemon: Pokemon) => {
+                filteredPokemon.map((pokemon: Pokemon, idx) => {
                     console.log(pokemon)
-                    return <PokemonCards
+                    return <Link
+                        href={`/pokemon/${pokemon.id}`}
                         key={nanoid()}
-                        pokemon={pokemon}
-                        error={error as Error}
-                        loading={loading}
-                    />
+                    >
+
+                        <PokemonCards
+                            key={nanoid()}
+                            pokemon={pokemon}
+                            error={error as Error}
+                            loading={loading}
+                        />
+                    </Link>
+
+
+
                 })
             }
 
